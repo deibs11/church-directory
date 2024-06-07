@@ -10,6 +10,7 @@ class ChurchController extends Controller
 {
     public function index()
     {
+        //vista normal
         $churches = Church::orderBy('status')->get();
         return view('churches.index', ['churches'=>$churches, 'status'=>'']);
     }
