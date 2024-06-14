@@ -63,7 +63,7 @@
                             <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado }}</p>
                             <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
 
-                            <Link :href="route('church' , {id:church.id})" 
+                            <Link :href="route('church', { id: church.id })"
                                 class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                             Ver mas
                             </Link>
@@ -81,9 +81,9 @@
                             <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado }}</p>
                             <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
 
-                            <Link :href="route('church' , {id:church.id})" 
-                            class=" ms-4 font-semibold  hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 bg-blue-500 text-white px-4 py-2 rounded-lg"
-                            style="background-color: #4741D7;">
+                            <Link :href="route('church', { id: church.id })"
+                                class=" ms-4 font-semibold  hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 bg-blue-500 text-white px-4 py-2 rounded-lg"
+                                style="background-color: #4741D7;">
                             Ver mas
                             </Link>
                         </div>
@@ -95,18 +95,19 @@
                     <div
                         :class="filteredReform.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'">
                         <div v-for="church in filteredReform" :key="church.id"
-                            class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
+                            class="bg-white shadow-md rounded-lg p-6 w-full sm:w-5/6 lg:w-4/5 mb-8">
                             <h2 class="text-xl font-semibold mb-2 text-center">{{ church.nombre }}</h2>
                             <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado }}</p>
                             <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
 
-                            <Link :href="route('church' , {id:church.id})" 
-                                class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                            Ver mas
-                            </Link>
+                            <router-link :to="{ name: 'church', params: { id: church.id } }"
+                                class="block mt-4 text-center text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                Ver más
+                            </router-link>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -163,8 +164,8 @@ export default {
 <style scoped>
 .grid {
     display: grid;
-    gap: 2rem;
-    /* Aumenta el espacio entre las tarjetas */
+    gap: 20px;
+    /* Ajusta el espacio entre las tarjetas a 20px */
 }
 
 .card {
@@ -173,7 +174,6 @@ export default {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     max-width: 100%;
-    /* Ajusta la anchura máxima */
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
@@ -185,9 +185,7 @@ export default {
 
 .sidebar {
     left: 5rem;
-    /* Margen desde la izquierda */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Sombra suave */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,78 +193,57 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     padding: 1rem;
-    /* Espacio interno */
     border-radius: 10px;
-    /* Radio de curvatura para esquinas redondeadas */
     background-color: #ffffff;
-    /* Color de fondo */
 }
 
 .filter-btn {
     color: #4741d7;
-    /* Color de texto inicial */
     transition: background-color 0.3s, color 0.3s;
-    /* Transición suave para color de fondo y texto */
     padding: 0.5rem 1rem;
-    /* Espacio interno del botón */
     border-radius: 999px;
-    /* Valor alto para hacer el fondo cilíndrico */
     margin-bottom: 0.5rem;
-    /* Margen inferior entre botones */
     text-align: center;
-    /* Alineación del texto a la izquierda */
     width: 100%;
-    /* Ancho completo del botón */
 }
 
 .filter-btn:hover {
     background-color: rgba(71, 65, 215, 0.1);
-    /* Color de fondo suave al pasar el mouse */
 }
 
 .filter-btn.active {
     background-color: #4741d7;
-    /* Color de fondo activo */
     color: white;
-    /* Color de texto activo */
     font-weight: bold;
-    /* Negrita para texto activo */
 }
 
 .sidebar h2 {
     text-align: center;
-    /* Alineación del título */
     font-size: 1.5rem;
-    /* Tamaño de fuente del título */
     font-weight: bold;
-    /* Negrita para el título */
     margin-bottom: 1rem;
-    /* Margen inferior del título */
 }
 
 .link-style {
-    margin-left: 1rem; /* Espacio a la izquierda del enlace */
-    font-weight: 600; /* Peso de la fuente */
-    color: #6366f1; /* Color de texto normal */
-    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves de color de fondo y texto */
-
-    /* Estilo de enlace */
+    margin-left: 1rem;
+    font-weight: 600;
+    color: #6366f1;
+    transition: background-color 0.3s, color 0.3s;
     text-decoration: none;
     cursor: pointer;
-
-    /* Estilo de fondo cilíndrico */
-    background-color: #4741D7; /* Color de fondo azul */
-    color: #ffffff; /* Color de texto blanco */
-    padding: 0.75rem 1.5rem; /* Relleno interno */
-    border-radius: 9999px; /* Radio grande para hacer un fondo cilíndrico */
-    display: inline-block; /* Bloque de visualización inline */
+    background-color: #4741D7;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    display: inline-block;
 }
 
-/* Estilo de enlace al colocar el mouse sobre el enlace 
-
-/* Estilo de enlace al enfocarse en el enlace */
 .link-style:focus {
-    outline: none; /* Eliminar el contorno predeterminado */
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5); /* Sombra alrededor del enlace al enfocarse */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5);
+}
+
+.rounded-lg {
+    margin-left: 20px;
 }
 </style>
