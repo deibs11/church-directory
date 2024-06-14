@@ -49,4 +49,22 @@ class ViewController extends Controller
             'countries' => $countries,
         ]);
     }
+
+    public function church($id)
+{
+    $church = Church::find($id);
+
+    if (!$church) {
+        abort(404);
+    }
+
+    return Inertia::render("Church", [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+        'authUser' => auth()->user(),
+        'church' => $church,
+    ]);
+}
 }
