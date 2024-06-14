@@ -8,13 +8,10 @@
         <div v-if="canLogin" class="sm:fixed sm:top-0 sm:end-0 p-6 text-end z-10">
 
             <!-- Navegacion ordinaria -->
-
-            <!-- Navegacion ordinaria -->
             <Link :href="route('Inicio')"
                 class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
             Inicio
             </Link>
-
 
             <Link :href="route('Directorio')"
                 class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
@@ -22,14 +19,10 @@
             </Link>
 
             <!-- Navegacion para el dashboard -->
-
-            <!-- Navegacion para el dashboard -->
             <Link v-if="canLogin" :href="route('login')"
                 class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
             Login
             </Link>
-
-
 
 
         </div>
@@ -45,166 +38,100 @@
                 :class="{ 'active': selectedCountry === country }" class="filter-btn mb-2 text-left focus:outline-none">
                 {{ country }}
             </button>
-            <div
-                class="sidebar flex flex-col p-6 bg-white shadow-lg fixed  top-1/2 transform -translate-y-1/2 rounded-lg">
-                <h2 class="text-xl font-semibold mb-4">Países</h2>
-                <button @click="filterByCountry('')" :class="{ 'active': selectedCountry === '' }"
-                    class="filter-btn mb-2 text-left focus:outline-none">
-                    Todos
-                </button>
-                <button v-for="country in countries" :key="country" @click="filterByCountry(country)"
-                    :class="{ 'active': selectedCountry === country }"
-                    class="filter-btn mb-2 text-left focus:outline-none">
-                    {{ country }}
-                </button>
+        </div>
+
+
+        <!-- CONTENIDO -->
+        <div class="max-w-7xl mx-auto p-6 lg:p-8 "> <!-- Adjusted margin for sidebar -->
+            <div class="flex justify-center mb-8">
+                <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
+                    <!-- SVG content -->
+                </svg>
             </div>
 
+            <div class="mt-16 text-center">
+                <h1 class="text-2xl font-bold mb-4 text-center">Directorio de Iglesias</h1>
 
+                <div v-if="filteredEstablished.length" class="mb-3">
+                    <h2 class="text-xl font-semibold mb-2 text-center">Establecidas</h2>
+                    <div
+                        :class="filteredEstablished.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8'">
+                        <div v-for="church in filteredEstablished" :key="church.id"
+                            class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
+                            <h2 class="text-xl font-semibold mb-2 text-center">{{ church.nombre }}</h2>
+                            <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado }}</p>
+                            <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
 
-            <!-- CONTENIDO -->
-            <div class="max-w-7xl mx-auto p-6 lg:p-8 "> <!-- Adjusted margin for sidebar -->
-                <div class="max-w-7xl mx-auto p-6 lg:p-8 "> <!-- Adjusted margin for sidebar -->
-                    <div class="flex justify-center mb-8">
-                        <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
-                            <!-- SVG content -->
-                        </svg>
+                            <Link :href="route('church', { id: church.id })"
+                                class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-arrow-right-circle-fill inline-block align-middle ms-1"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                            </Link>
+
+                        </div>
                     </div>
+                </div>
 
-                    <div class="mt-16 text-center">
-                        <h1 class="text-2xl font-bold mb-4 text-center">Directorio de Iglesias</h1>
+                <div v-if="filteredMissions.length">
+                    <h2 class="text-xl font-semibold mb-2 text-center">Misión</h2>
+                    <div
+                        :class="filteredMissions.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8'">
+                        <div v-for="church in filteredMissions" :key="church.id"
+                            class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
+                            <h2 class="text-xl font-semibold mb-2 text-center">{{ church.nombre }}</h2>
+                            <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado }}</p>
+                            <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
 
-                        <div v-if="filteredEstablished.length" class="mb-3">
-                            <h2 class="text-xl font-semibold mb-2 text-center">Establecidas</h2>
-                            <div
-                                :class="filteredEstablished.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8'">
-                                <div v-for="church in filteredEstablished" :key="church.id"
-                                    class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
-                                    <h2 class="text-xl font-semibold mb-2 text-center">{{ church.nombre }}</h2>
-                                    <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado }}</p>
-                                    <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
+                            <Link :href="route('church', { id: church.id })"
+                                class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-arrow-right-circle-fill inline-block align-middle ms-1"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
 
-                                    <Link :href="route('church', { id: church.id })"
-                                        class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                    Ver mas
-                                    </Link>
-                                </div>
-                                <div class="mt-16 text-center">
-                                    <h1 class="text-2xl font-bold mb-4 text-center">Directorio de Iglesias</h1>
+                <div v-if="filteredReform.length">
+                    <h2 class="text-xl font-semibold mb-2 text-center">En Proceso de Reforma</h2>
+                    <div
+                        :class="filteredReform.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'">
+                        <div v-for="church in filteredReform" :key="church.id"
+                            class="bg-white shadow-md rounded-lg p-6 w-full sm:w-5/6 lg:w-4/5 mb-8">
+                            <h2 class="text-xl font-semibold mb-2 text-center">{{ church.nombre }}</h2>
+                            <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado }}</p>
+                            <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
 
-                                    <div v-if="filteredEstablished.length" class="mb-3">
-                                        <h2 class="text-xl font-semibold mb-2 text-center">Establecidas</h2>
-                                        <div
-                                            :class="filteredEstablished.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8'">
-                                            <div v-for="church in filteredEstablished" :key="church.id"
-                                                class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
-                                                <h2 class="text-xl font-semibold mb-2 text-center">{{ church.nombre }}
-                                                </h2>
-                                                <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado
-                                                    }}</p>
-                                                <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
+                            <Link :href="route('church', { id: church.id })"
+                                class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-arrow-right-circle-fill inline-block align-middle ms-1"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
 
-                                                <Link :href="route('church' , {id:church.id})"
-                                                    class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                                Ver mas
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="filteredMissions.length">
-                                        <h2 class="text-xl font-semibold mb-2 text-center">Misión</h2>
-                                        <div
-                                            :class="filteredMissions.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8'">
-                                            <div v-for="church in filteredMissions" :key="church.id"
-                                                class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
-                                                <h2 class="text-xl font-semibold mb-2 text-center">{{ church.nombre }}
-                                                </h2>
-                                                <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{ church.estado
-                                                    }}</p>
-                                                <p class="text-gray-600"><strong>País:</strong> {{ church.pais }}</p>
-
-                                                <Link :href="route('church', { id: church.id })"
-                                                    class=" ms-4 font-semibold  hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 bg-blue-500 text-white px-4 py-2 rounded-lg"
-                                                    style="background-color: #4741D7;">
-                                                Ver mas
-                                                </Link>
-                                            </div>
-                                            <div v-if="filteredMissions.length">
-                                                <h2 class="text-xl font-semibold mb-2 text-center">Misión</h2>
-                                                <div
-                                                    :class="filteredMissions.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8'">
-                                                    <div v-for="church in filteredMissions" :key="church.id"
-                                                        class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
-                                                        <h2 class="text-xl font-semibold mb-2 text-center">{{
-                                                            church.nombre }}</h2>
-                                                        <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{
-                                                            church.estado }}</p>
-                                                        <p class="text-gray-600"><strong>País:</strong> {{ church.pais
-                                                            }}</p>
-
-                                                        <Link :href="route('church' , {id:church.id})"
-                                                            class=" ms-4 font-semibold  hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 bg-blue-500 text-white px-4 py-2 rounded-lg"
-                                                            style="background-color: #4741D7;">
-                                                        Ver mas
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div v-if="filteredReform.length">
-                                                <h2 class="text-xl font-semibold mb-2 text-center">En Proceso de Reforma
-                                                </h2>
-                                                <div
-                                                    :class="filteredReform.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'">
-                                                    <div v-for="church in filteredReform" :key="church.id"
-                                                        class="bg-white shadow-md rounded-lg p-6 w-full sm:w-5/6 lg:w-4/5 mb-8">
-                                                        <h2 class="text-xl font-semibold mb-2 text-center">{{
-                                                            church.nombre }}</h2>
-                                                        <p class="text-gray-600 mb-1"><strong>Estado:</strong> {{
-                                                            church.estado }}</p>
-                                                        <p class="text-gray-600"><strong>País:</strong> {{ church.pais
-                                                            }}</p>
-
-                                                        <router-link :to="{ name: 'church', params: { id: church.id } }"
-                                                            class="block mt-4 text-center text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                                            Ver más
-                                                        </router-link>
-                                                    </div>
-                                                    <div v-if="filteredReform.length">
-                                                        <h2 class="text-xl font-semibold mb-2 text-center">En Proceso de
-                                                            Reforma</h2>
-                                                        <div
-                                                            :class="filteredReform.length <= 2 ? 'flex justify-center' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'">
-                                                            <div v-for="church in filteredReform" :key="church.id"
-                                                                class="bg-white shadow-md rounded-lg p-6 mx-auto w-full sm:w-5/6 lg:w-4/5">
-                                                                <h2 class="text-xl font-semibold mb-2 text-center">{{
-                                                                    church.nombre }}</h2>
-                                                                <p class="text-gray-600 mb-1"><strong>Estado:</strong>
-                                                                    {{ church.estado }}</p>
-                                                                <p class="text-gray-600"><strong>País:</strong> {{
-                                                                    church.pais }}</p>
-
-                                                                <Link :href="route('church' , {id:church.id})"
-                                                                    class="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                                                Ver mas
-                                                                </Link>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+            </div>
+        </div>
+    </div>
 </template>
-
 
 <!-- Script para filtrado -->
 
 <!-- Script para filtrado -->
 <script>
-import { Head, Link, usePage } from '@inertiajs/inertia-vue3';
 import { Head, Link, usePage } from '@inertiajs/inertia-vue3';
 export default {
     components: {
@@ -253,7 +180,6 @@ export default {
 }
 </script>
 
-<!-- Estilos de vista (cards y sidebar -->
 <!-- Estilos de vista (cards y sidebar -->
 <style scoped>
 .grid {
