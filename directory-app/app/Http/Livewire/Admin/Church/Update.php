@@ -13,19 +13,23 @@ class Update extends Component
     public $church;
 
     public $nombre;
-    public $descripcion;
+    public $mapa;
     public $direccion;
     public $ciudad;
     public $estado;
     public $pais;
     public $cp;
+    public $ubicacion_enlace;
     public $status;
     public $telefono;
     public $email;
+    public $facebook;
+    public $pagina_web;
+    public $instagram;
     
     protected $rules = [
         'nombre' => 'required|min:7|max:50',
-        'descripcion' => 'required|min:50',
+        'mapa' => 'required|min:50',
         'direccion' => 'required|min:10',
         'ciudad' => 'required|min:5',
         'estado' => 'required|min:6',
@@ -37,15 +41,19 @@ class Update extends Component
     public function mount(Church $Church){
         $this->church = $Church;
         $this->nombre = $this->church->nombre;
-        $this->descripcion = $this->church->descripcion;
+        $this->mapa = $this->church->mapa;
         $this->direccion = $this->church->direccion;
         $this->ciudad = $this->church->ciudad;
         $this->estado = $this->church->estado;
         $this->pais = $this->church->pais;
         $this->cp = $this->church->cp;
+        $this->ubicacion_enlace = $this->church->ubicacion_enlace;
         $this->status = $this->church->status;
         $this->telefono = $this->church->telefono;
-        $this->email = $this->church->email;        
+        $this->email = $this->church->email;
+        $this->facebook = $this->church->facebook;
+        $this->pagina_web = $this->church->pagina_web;
+        $this->instagram = $this->church->instagram;        
     }
 
     public function updated($input)
@@ -62,15 +70,19 @@ class Update extends Component
         
         $this->church->update([
             'nombre' => $this->nombre,
-            'descripcion' => $this->descripcion,
+            'mapa' => $this->mapa,
             'direccion' => $this->direccion,
             'ciudad' => $this->ciudad,
             'estado' => $this->estado,
             'pais' => $this->pais,
             'cp' => $this->cp,
+            'ubicacion_enlace' => $this->ubicacion_enlace,
             'status' => $this->status,
             'telefono' => $this->telefono,
             'email' => $this->email,
+            'facebook' => $this->facebook,
+            'pagina_web' => $this->pagina_web,
+            'instagram' => $this->instagram,
             'user_id' => auth()->id(),
         ]);
     }

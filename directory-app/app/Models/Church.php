@@ -10,14 +10,20 @@ class Church extends Model
     use HasFactory;
     protected $fillable = [
         'nombre',
-        'descripcion',
+        'mapa',
+        'latitud',
+        'longitud',
         'direccion',
         'ciudad',
         'estado',
         'pais',
         'cp',
+        'ubicacion_enlace',
         'status',
         'telefono',
         'email',
+        'pagina_web', // Página web (opcional)
+        'facebook', // Facebook (opcional)
+        'instagram', // Instagram (opcional)
     ];
 }

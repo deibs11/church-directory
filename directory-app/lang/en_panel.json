@@ -78,5 +78,10 @@
     "Telefono": "Telefono",
     "Email": "Email",
     "Church": "Church",
-    "Churches": "Churches"
+    "Churches": "Churches",
+    "Mapa": "Mapa",
+    "Ubicacion_enlace": "Ubicacion_enlace",
+    "Pagina_web": "Pagina_web",
+    "Facebook": "Facebook",
+    "Instagram": "Instagram"
 }

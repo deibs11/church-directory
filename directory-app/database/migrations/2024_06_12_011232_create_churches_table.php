@@ -14,15 +14,21 @@ return new class extends Migration
         Schema::create('churches', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('mapa', 550);
+            $table->decimal('latitud', 10, 7);
+            $table->decimal('longitud',10,7);
             $table->string('direccion');
             $table->string('ciudad');
             $table->string('estado');
             $table->string('pais');
             $table->string('cp');
+            $table->string('ubicacion_enlace');
             $table->string('status');
             $table->string('telefono')->nullable();
             $table->string('email')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('pagina_web')->nullable();
+            $table->string('instagram')->nullable();
             $table->timestamps();
         });
     }

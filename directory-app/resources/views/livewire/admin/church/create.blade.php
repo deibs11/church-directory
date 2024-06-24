@@ -19,11 +19,11 @@
                 <input type='text' id='input-nombre' wire:model.lazy='nombre' class="form-control  @error('nombre') is-invalid @enderror" placeholder='' autocomplete='on'>
                 @error('nombre') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
-            <!-- Descripcion Input -->
+            <!-- Mapa Input -->
             <div class='form-group'>
-                <label for='input-descripcion' class='col-sm-2 control-label '> {{ __('Descripcion') }}</label>
-                <input type='text' id='input-descripcion' wire:model.lazy='descripcion' class="form-control  @error('descripcion') is-invalid @enderror" placeholder='' autocomplete='on'>
-                @error('descripcion') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+                <label for='input-mapa' class='col-sm-2 control-label '> {{ __('Mapa') }}</label>
+                <input type='text' id='input-mapa' wire:model.lazy='mapa' class="form-control  @error('mapa') is-invalid @enderror" placeholder='' autocomplete='on'>
+                @error('mapa') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
             <!-- Direccion Input -->
             <div class='form-group'>
@@ -55,6 +55,12 @@
                 <input type='text' id='input-cp' wire:model.lazy='cp' class="form-control  @error('cp') is-invalid @enderror" placeholder='' autocomplete='on'>
                 @error('cp') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
+            <!-- Ubicacion_enlace Input -->
+            <div class='form-group'>
+                <label for='input-ubicacion_enlace' class='col-sm-2 control-label '> {{ __('Ubicacion_enlace') }}</label>
+                <input type='text' id='input-ubicacion_enlace' wire:model.lazy='ubicacion_enlace' class="form-control  @error('ubicacion_enlace') is-invalid @enderror" placeholder='' autocomplete='on'>
+                @error('ubicacion_enlace') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+            </div>
             <!-- Status Input -->
             <div class='form-group'>
                 <label for='input-status' class='col-sm-2 control-label '> {{ __('Status') }}</label>
@@ -72,6 +78,24 @@
                 <label for='input-email' class='col-sm-2 control-label '> {{ __('Email') }}</label>
                 <input type='text' id='input-email' wire:model.lazy='email' class="form-control  @error('email') is-invalid @enderror" placeholder='' autocomplete='on'>
                 @error('email') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+            </div>
+            <!-- Facebook Input -->
+            <div class='form-group'>
+                <label for='input-facebook' class='col-sm-2 control-label '> {{ __('Facebook') }}</label>
+                <input type='text' id='input-facebook' wire:model.lazy='facebook' class="form-control  @error('facebook') is-invalid @enderror" placeholder='' autocomplete='on'>
+                @error('facebook') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+            </div>
+            <!-- Pagina_web Input -->
+            <div class='form-group'>
+                <label for='input-pagina_web' class='col-sm-2 control-label '> {{ __('Pagina_web') }}</label>
+                <input type='text' id='input-pagina_web' wire:model.lazy='pagina_web' class="form-control  @error('pagina_web') is-invalid @enderror" placeholder='' autocomplete='on'>
+                @error('pagina_web') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+            </div>
+            <!-- Instagram Input -->
+            <div class='form-group'>
+                <label for='input-instagram' class='col-sm-2 control-label '> {{ __('Instagram') }}</label>
+                <input type='text' id='input-instagram' wire:model.lazy='instagram' class="form-control  @error('instagram') is-invalid @enderror" placeholder='' autocomplete='on'>
+                @error('instagram') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
 
         </div>
