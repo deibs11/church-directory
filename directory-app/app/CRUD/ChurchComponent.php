@@ -25,7 +25,7 @@ class ChurchComponent implements CRUDComponent
     // which kind of data should be showed in list page
     public function fields()
     {
-        return ['nombre', 'descripcion', 'direccion', 'ciudad', 'estado', 'pais', 'cp', 'status', 'telefono', 'email'];
+        return ['nombre', 'mapa', 'direccion', 'ciudad', 'estado', 'pais', 'cp', 'ubicacion_enlace', 'status', 'telefono', 'email', 'pagina_web', 'facebook', 'instagram'];
     }
 
     // Searchable fields, if you dont want search feature, remove it
@@ -41,15 +41,19 @@ class ChurchComponent implements CRUDComponent
     {
         return [
             'nombre' => 'text',
-            'descripcion'=> 'text',
+            'mapa'=> 'text',
             'direccion'=> 'text',
             'ciudad'=> 'text',
             'estado'=> 'text',
             'pais'=> 'text',
             'cp'=> 'text',
+            'ubicacion_enlace'=> 'text',
             'status'=> 'text',
             'telefono'=> 'text',
             'email'=> 'text',
+            'facebook'=> 'text',
+            'pagina_web'=> 'text',
+            'instagram'=> 'text',
         ];
     }
 
@@ -59,7 +63,7 @@ class ChurchComponent implements CRUDComponent
     {
         return [
             'nombre'=> 'required|min:7|max:50',
-            'descripcion' => 'required|min:50',
+            'mapa' => 'required|min:50',
             'direccion'=> 'required|min:10',
             'ciudad'=> 'required|min:5',
             'estado'=> 'required|min:6',
@@ -76,3 +80,7 @@ class ChurchComponent implements CRUDComponent
         return [];
     }
 }
+
+
+    
+

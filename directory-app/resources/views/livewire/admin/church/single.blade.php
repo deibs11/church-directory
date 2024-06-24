@@ -1,25 +1,29 @@
 <tr x-data="{ modalIsOpen : false }">
     <td class="">{{ $church->nombre }}</td>
-    <td class="">{{ $church->descripcion }}</td>
+    <td class="">{{ $church->mapa }}</td>
     <td class="">{{ $church->direccion }}</td>
     <td class="">{{ $church->ciudad }}</td>
     <td class="">{{ $church->estado }}</td>
     <td class="">{{ $church->pais }}</td>
     <td class="">{{ $church->cp }}</td>
+    <td class="">{{ $church->ubicacion_enlace }}</td>
     <td class="">{{ $church->status }}</td>
     <td class="">{{ $church->telefono }}</td>
     <td class="">{{ $church->email }}</td>
+    <td class="">{{ $church->pagina_web }}</td>
+    <td class="">{{ $church->facebook }}</td>
+    <td class="">{{ $church->instagram }}</td>
     
     @if(getCrudConfig('Church')->delete or getCrudConfig('Church')->update)
         <td>
 
-            @if(getCrudConfig('Church')->update && hasPermission(getRouteName().'.church.update', 1, 1, $church))
+            @if(getCrudConfig('Church')->update && hasPermission(getRouteName().'.church.update', 0, 0, $church))
                 <a href="@route(getRouteName().'.church.update', $church->id)" class="btn text-primary mt-1">
                     <i class="icon-pencil"></i>
                 </a>
             @endif
 
-            @if(getCrudConfig('Church')->delete && hasPermission(getRouteName().'.church.delete', 1, 1, $church))
+            @if(getCrudConfig('Church')->delete && hasPermission(getRouteName().'.church.delete', 0, 0, $church))
                 <button @click.prevent="modalIsOpen = true" class="btn text-danger mt-1">
                     <i class="icon-trash"></i>
                 </button>
