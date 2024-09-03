@@ -14,6 +14,8 @@ class Update extends Component
 
     public $nombre;
     public $mapa;
+    public $latitud;
+    public $longitud;
     public $direccion;
     public $ciudad;
     public $estado;
@@ -42,6 +44,8 @@ class Update extends Component
         $this->church = $Church;
         $this->nombre = $this->church->nombre;
         $this->mapa = $this->church->mapa;
+        $this->latitud = $this->church->latitud;
+        $this->longitud = $this->church->longitud;
         $this->direccion = $this->church->direccion;
         $this->ciudad = $this->church->ciudad;
         $this->estado = $this->church->estado;
@@ -71,6 +75,8 @@ class Update extends Component
         $this->church->update([
             'nombre' => $this->nombre,
             'mapa' => $this->mapa,
+            'latitud' => $this->latitud,
+            'longitud' => $this->longitud,
             'direccion' => $this->direccion,
             'ciudad' => $this->ciudad,
             'estado' => $this->estado,

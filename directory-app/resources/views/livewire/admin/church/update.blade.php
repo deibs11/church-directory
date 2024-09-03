@@ -26,6 +26,18 @@
                 <input type='text' id='input-mapa' wire:model.lazy='mapa' class="form-control  @error('mapa') is-invalid @enderror" placeholder='' autocomplete='on'>
                 @error('mapa') <div class='invalid-feedback'>{{ $message }}</div> @enderror
             </div>
+            <!-- Latitud Input -->
+            <div class='form-group'>
+                <label for='input-latitud' class='col-sm-2 control-label '> {{ __('Latitud') }}</label>
+                <input type='text' id='input-latitud' wire:model.lazy='latitud' class="form-control  @error('latitud') is-invalid @enderror" placeholder='' autocomplete='on'>
+                @error('latitud') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+            </div>
+            <!-- Longitud Input -->
+            <div class='form-group'>
+                <label for='input-longitud' class='col-sm-2 control-label '> {{ __('Longitud') }}</label>
+                <input type='text' id='input-longitud' wire:model.lazy='longitud' class="form-control  @error('longitud') is-invalid @enderror" placeholder='' autocomplete='on'>
+                @error('longitud') <div class='invalid-feedback'>{{ $message }}</div> @enderror
+            </div>
             <!-- Direccion Input -->
             <div class='form-group'>
                 <label for='input-direccion' class='col-sm-2 control-label '> {{ __('Direccion') }}</label>

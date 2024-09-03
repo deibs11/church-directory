@@ -29,12 +29,18 @@
                 Atrás
             </button>
     </div>
+
+    <div>
+      <ChurchMap :churches="churches" />
+    </div>
 </template>
 
 <script>
 import { Head, Link, usePage } from '@inertiajs/inertia-vue3';
 import DOMPurify from 'dompurify';
 import { Inertia } from '@inertiajs/inertia';
+import {onMounted} from 'vue';
+import L from 'leaflet';
 
 export default {
     components: {
