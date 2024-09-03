@@ -83,5 +83,7 @@
     "Ubicacion_enlace": "Ubicacion_enlace",
     "Pagina_web": "Pagina_web",
     "Facebook": "Facebook",
-    "Instagram": "Instagram"
+    "Instagram": "Instagram",
+    "Latitud": "Latitud",
+    "Longitud": "Longitud"
 }

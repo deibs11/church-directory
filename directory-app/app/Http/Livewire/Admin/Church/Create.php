@@ -12,6 +12,8 @@ class Create extends Component
 
     public $nombre;
     public $mapa;
+    public $latitud;
+    public $longitud;
     public $direccion;
     public $ciudad;
     public $estado;
@@ -51,6 +53,8 @@ class Create extends Component
         Church::create([
             'nombre' => $this->nombre,
             'mapa' => $this->mapa,
+            'latitud' => $this->latitud,
+            'longitud' => $this->longitud,
             'direccion' => $this->direccion,
             'ciudad' => $this->ciudad,
             'estado' => $this->estado,

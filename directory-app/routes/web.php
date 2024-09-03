@@ -34,3 +34,4 @@ Route::middleware([
 Route::get('/directorio', [ViewController::class, 'directory'])->name('Directorio');
 Route::get('/', [ViewController::class,'index'])->name('Inicio');
 Route::get('/directorio/iglesia/{id}', [ViewController::class, 'church'])->name('church');
+Route::get('/mapa', [ViewController::class, 'mapa'])->name('churches.map');

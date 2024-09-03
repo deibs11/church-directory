@@ -1,6 +1,8 @@
 <tr x-data="{ modalIsOpen : false }">
     <td class="">{{ $church->nombre }}</td>
     <td class="">{{ $church->mapa }}</td>
+    <td class="">{{ $church->latitud }}</td>
+    <td class="">{{ $church->longitud }}</td>
     <td class="">{{ $church->direccion }}</td>
     <td class="">{{ $church->ciudad }}</td>
     <td class="">{{ $church->estado }}</td>

@@ -25,13 +25,13 @@ class ChurchComponent implements CRUDComponent
     // which kind of data should be showed in list page
     public function fields()
     {
-        return ['nombre', 'mapa', 'direccion', 'ciudad', 'estado', 'pais', 'cp', 'ubicacion_enlace', 'status', 'telefono', 'email', 'pagina_web', 'facebook', 'instagram'];
+        return ['nombre', 'mapa', 'latitud', 'longitud', 'direccion', 'ciudad', 'estado', 'pais', 'cp', 'ubicacion_enlace', 'status', 'telefono', 'email', 'pagina_web', 'facebook', 'instagram'];
     }
 
     // Searchable fields, if you dont want search feature, remove it
     public function searchable()
     {
-        return ['nombre', 'pais', 'cp', 'status' ];
+        return ['nombre', 'mapa', 'latitud', 'longitud', 'direccion', 'ciudad', 'estado', 'pais', 'cp', 'ubicacion_enlace', 'status', 'telefono', 'email', 'pagina_web', 'facebook', 'instagram'];
     }
 
     // Write every fields in your db which you want to have a input
@@ -39,22 +39,24 @@ class ChurchComponent implements CRUDComponent
     // "password", "number", "email", "select", "date", "datetime", "time"
     public function inputs()
     {
-        return [
-            'nombre' => 'text',
-            'mapa'=> 'text',
-            'direccion'=> 'text',
-            'ciudad'=> 'text',
-            'estado'=> 'text',
-            'pais'=> 'text',
-            'cp'=> 'text',
-            'ubicacion_enlace'=> 'text',
-            'status'=> 'text',
-            'telefono'=> 'text',
-            'email'=> 'text',
-            'facebook'=> 'text',
-            'pagina_web'=> 'text',
-            'instagram'=> 'text',
-        ];
+        return [ 
+        'nombre' => 'text',
+        'mapa'=> 'text',
+        'latitud' => 'text',
+        'longitud' => 'text',
+        'direccion'=> 'text',
+        'ciudad'=> 'text',
+        'estado'=> 'text',
+        'pais'=> 'text',
+        'cp'=> 'text',
+        'ubicacion_enlace'=> 'text',
+        'status'=> 'text',
+        'telefono'=> 'text',
+        'email'=> 'text',
+        'facebook'=> 'text',
+        'pagina_web'=> 'text',
+        'instagram'=> 'text',
+    ];
     }
 
     // Validation in update and create actions
@@ -62,7 +64,7 @@ class ChurchComponent implements CRUDComponent
     public function validationRules()
     {
         return [
-            'nombre'=> 'required|min:7|max:50',
+            'nombre'=> 'required|min:7|max:10',
             'mapa' => 'required|min:50',
             'direccion'=> 'required|min:10',
             'ciudad'=> 'required|min:5',
@@ -80,7 +82,3 @@ class ChurchComponent implements CRUDComponent
         return [];
     }
 }
-
-
-    
-

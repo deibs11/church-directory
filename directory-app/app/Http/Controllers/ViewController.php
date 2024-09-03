@@ -67,4 +67,16 @@ class ViewController extends Controller
         'church' => $church,
     ]);
 }
+
+public function mapa()
+    {
+        $churches = Church::all(['nombre', 'latitud', 'longitud', 'direccion']);
+        return Inertia::render('ChurchMap', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+            'authUser' => auth()->user(),
+            'churches' => $churches]);
+    }
 }
